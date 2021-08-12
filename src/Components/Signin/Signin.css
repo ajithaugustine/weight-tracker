@@ -1,0 +1,29 @@
+.signin{
+height: 100vh;
+display: flex;
+justify-content: center;
+align-items: center;
+background:linear-gradient(to right ,rgb(8, 187, 163),white);
+}
+
+.signin h4{
+    text-align: center;
+    color: white;
+}
+.signin form{
+    width: 40%;
+    margin: auto;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: rgba(24, 148, 138, 0.904);
+    box-shadow: 1px 2px 4px rgb(0, 0, 0);
+
+
+}
+.signin input{
+    margin-bottom: 10px;
+}
+
+.signin .btn{
+  text-align: center;
+}
