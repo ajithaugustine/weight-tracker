@@ -1,52 +1,32 @@
-import React, { useState } from "react";
-import {Link} from "react-router-dom"
+import React from "react";
+import {useHistory} from "react-router-dom"
+import firebase from "../../Firebase/Firebase";
 import "./Signin.css";
 function Signin() {
-  const [user, setuser] = useState("");
-  const [password, setpassword] = useState("");
-
+const history = useHistory()
   const userlogin = (e) => {
-    e.preventDefault();
+      e.preventDefault()
+      firebase.auth().signInAnonymously()
+      .then((user) => {
+        console.log(user)
+        history.push('/home')
+      })
+      .catch((error) => {     
+       console.log(error.meassage)
+      });
   };
+
+
+
   return (
     <div className="signin">
       <form onSubmit={userlogin}>
-        <h4>SignIn</h4>
-        <div className="form-floating ">
-          <input
-            type="text"
-            className="form-control"
-            id="floatingInput"
-            placeholder="username"
-            required
-            autoComplete="off"
-            value={user}
-            onChange={(e) => setuser(e.target.value.trim())}
-          />
-          <label>User Name</label>
-        </div>
-
-        <div className="form-floating">
-          <input
-            type="password"
-            className="form-control"
-            id="floatingPassword"
-            placeholder="Password"
-            required
-            
-            value={password}
-            onChange={(e)=>setpassword(e.target.value.trim())}
-          />
-          <label >Password</label>
-        </div>
+        <h4>SignIn </h4>    
         <div className="d-flex justify-content-center">
-          <button type="submit" className="btn btn-info ">
+          <button type='submit' className="btn btn-info ">
             SignIn
           </button>
-        </div>
-        <div className="d-flex justify-content-center">
-        <p className='text-white'>Don't Have an Account? </p> <Link to='/signup' className='text-dark'>SignUp</Link>
-        </div>
+        </div>  
       </form>
     </div>
   );
